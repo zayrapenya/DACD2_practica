@@ -12,6 +12,9 @@ public class Calculator {
             case MULTIPLY:
                 return a * b;
             case DIVIDE:
+                if (b == 0) {
+                    throw new IllegalArgumentException("No se puede dividir por cero");
+                }
                 return a / b;
             default:
                 throw new IllegalArgumentException("Unknown operation");
