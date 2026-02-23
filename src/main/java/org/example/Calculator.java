@@ -1,21 +1,37 @@
 package org.example;
 
 
+
 public class Calculator {
-    public double calculate(String operation, double a, double b) {
-        if (operation.equals("add")) {
-            return a + b;
-        } else if (operation.equals("subtract")) {
-            return a - b;
-        } else if (operation.equals("multiply")) {
-            return a * b;
-        } else if (operation.equals("divide")) {
-            if (b != 0) {
+    public double calculate(Operation operation, double a, double b) {
+        switch (operation) {
+            case ADD:
+                return a + b;
+            case SUBSTRACT:
+                return a - b;
+            case MULTIPLY:
+                return a * b;
+            case DIVIDE:
                 return a / b;
-            } else {
-                throw new IllegalArgumentException("Cannot divide by zero");
-            }
+            default:
+                throw new IllegalArgumentException("Unknown operation");
         }
-        throw new IllegalArgumentException("Unknown operation: " + operation);
     }
+
+    private double add(double a, double b) {
+        return a + b;
+    }
+    private double subtract(double a, double b) {
+        return a - b;
+    }
+    private double multiply(double a, double b) {
+        return a * b;
+    }
+    public double divide(double a, double b) {
+        if (b == 0) {
+            throw new IllegalArgumentException("Cannot divide by zero");
+        }
+        return a / b;
+    }
+
 }
